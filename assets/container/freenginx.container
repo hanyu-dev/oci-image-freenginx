@@ -1,0 +1,75 @@
+[Unit]
+Description=Freenginx container service
+RequiresMountsFor=%t/containers
+
+[Container]
+# ================================
+# * Basic settings
+# ================================
+# * The name of the container.
+ContainerName=freenginx
+# * The OCI image of the container.
+Image=ghcr.io/hanyu-dev/oci-image-freenginx:1.31
+# * Automatically update the container image.
+AutoUpdate=registry
+
+# ================================
+# * Security settings
+# ================================
+NoNewPrivileges=true
+DropCapability=ALL
+AddCapability=CAP_NET_BIND_SERVICE
+# SeccompProfile=%h/.local/share/freenginx/seccomp.json
+
+# ================================
+# * Namespace isolation settings
+# ================================
+# * Run the container in user namespace mode with the current user's ID.
+# *
+# * Don't modify this field unless you know what you're doing.
+UserNS=keep-id:uid=65532,gid=65532
+
+# ================================
+# * Network settings
+# ================================
+# * Use the host's network stack for better performance.
+Network=host
+# * Publish ports from the container to the host.
+# *
+# * If Network=host is used, these options will be ignored.
+# * The format is [host_ip:]host_port:container_port[/protocol].
+# * Please set these according to what you configured.
+# PublishPort=80:80
+# PublishPort=443:443
+# PublishPort=443:443/udp
+
+# ================================
+# * Persistent settings
+# ================================
+# * Persists configuration files.
+Volume=%h/.local/share/freenginx/conf:/opt/freenginx/conf
+# * Persists logs.
+Volume=%h/.local/share/freenginx/logs:/opt/freenginx/logs
+# * Persists SSL stuffs.
+Volume=%h/.local/share/freenginx/ssl:/opt/freenginx/ssl
+
+# ================================
+# * Volume settings
+# ================================
+# Volume=/path/to/local/dir:/path/to/container/dir
+
+[Service]
+# * Always restart the container if it stops.
+Restart=always
+# * Give the container more time to start.
+TimeoutStartSec=900
+# * Generate configuration extracting real IP from HTTP headers added by Cloudflare.
+#
+# * If you gate your servers behind Cloudflare, uncomment the following line.
+# ExecStartPre=%h/.local/share/freenginx/scripts/cloudflare-real-ip-helper.sh
+# * For Podman v5.4 or lower, we have to manually specify reload command.
+ExecReload=/usr/bin/podman exec freenginx /opt/freenginx/sbin/nginx -s reload
+
+[Install]
+# * Enable the service to start at boot.
+WantedBy=default.target
