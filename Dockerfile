@@ -192,24 +192,24 @@ EOF
 
 # === install: mimalloc ===
 
-WORKDIR /src/mimalloc
-
-RUN <<'EOF'
-set -e
-cmake -S . -B out/release \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr/local \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DMI_INSTALL_TOPLEVEL=ON \
-    -DMI_BUILD_STATIC=ON \
-    -DMI_BUILD_SHARED=OFF \
-    -DMI_BUILD_TESTS=OFF \
-    -DMI_OVERRIDE=ON \
-    -DMI_OPT_ARCH=ON \
-    -DMI_ALLOW_THP=FULL
-cmake --build out/release -j "$(nproc)"
-cmake --install out/release
-EOF
+# WORKDIR /src/mimalloc
+#
+# RUN <<'EOF'
+# set -e
+# cmake -S . -B out/release \
+#     -DCMAKE_BUILD_TYPE=Release \
+#     -DCMAKE_INSTALL_PREFIX=/usr/local \
+#     -DCMAKE_INSTALL_LIBDIR=lib \
+#     -DMI_INSTALL_TOPLEVEL=ON \
+#     -DMI_BUILD_STATIC=ON \
+#     -DMI_BUILD_SHARED=OFF \
+#     -DMI_BUILD_TESTS=OFF \
+#     -DMI_OVERRIDE=ON \
+#     -DMI_OPT_ARCH=ON \
+#     -DMI_ALLOW_THP=FULL
+# cmake --build out/release -j "$(nproc)"
+# cmake --install out/release
+# EOF
 
 # === build: ngx-brotli ===
 
@@ -249,7 +249,7 @@ set -e
 	--with-pcre="/src/pcre2" \
 	--with-pcre-jit \
 	--with-cc-opt="-I/usr/local/include -O3 -march=x86-64-v3 -mtune=generic -flto=auto -ffunction-sections -fdata-sections -fPIE -fstack-protector-strong -fstack-clash-protection -fcf-protection=full -ftrivial-auto-var-init=zero -D_FORTIFY_SOURCE=2" \
-	--with-ld-opt="-L/usr/local/lib -static-pie -static-libgcc -flto=auto -lz -lmimalloc -Wl,--gc-sections -Wl,-z,noexecstack -Wl,-z,text -Wl,-z,relro -Wl,-z,now" \
+	--with-ld-opt="-L/usr/local/lib -static-pie -static-libgcc -flto=auto -lz -Wl,--gc-sections -Wl,-z,noexecstack -Wl,-z,text -Wl,-z,relro -Wl,-z,now" \
 	--with-compat \
 	--with-threads \
 	--with-http_realip_module \

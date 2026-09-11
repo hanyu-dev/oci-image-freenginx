@@ -31,7 +31,7 @@ env:
   # See https://github.com/freeNginx/nginx/tags
   IMAGE_FREENGINX_VERSION: 1.31.4
   IMAGE_FREENGINX_COMMIT: 572c34e56271b5a56365d0c810a9e1603189b217
-  IMAGE_BUILD_REVISION: 0
+  IMAGE_BUILD_REVISION: 1
   # See https://quay.io/repository/buildah/stable?tab=tags
   IMAGE_BUILDAH_VERSION: 1.43.2-immutable
   IMAGE_BUILDAH_DIGEST: 19ee6da290f77e63ab7f108a1b22e63d4c36cb827fba9f494982c5ceeba27019
