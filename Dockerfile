@@ -220,8 +220,8 @@ set -e
 mkdir -p ./deps/brotli/out
 cmake \
 	-DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_C_FLAGS="-m64 -march=x86-64-v3 -mtune=generic -O3 -march=x86-64-v3 -mtune=generic -flto=auto -fPIC -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fcf-protection=full -ftrivial-auto-var-init=zero -D_FORTIFY_SOURCE=2" \
-	-DCMAKE_CXX_FLAGS="-m64 -march=x86-64-v3 -mtune=generic -O3 -march=x86-64-v3 -mtune=generic -flto=auto -fPIC -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fcf-protection=full -ftrivial-auto-var-init=zero -D_FORTIFY_SOURCE=2" \
+	-DCMAKE_C_FLAGS="-m64 -march=x86-64-v2 -mtune=generic -O3 -flto=auto -fPIC -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fcf-protection=full -ftrivial-auto-var-init=zero -D_FORTIFY_SOURCE=2" \
+	-DCMAKE_CXX_FLAGS="-m64 -march=x86-64-v2 -mtune=generic -O3 -flto=auto -fPIC -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fcf-protection=full -ftrivial-auto-var-init=zero -D_FORTIFY_SOURCE=2" \
 	-DCMAKE_INSTALL_PREFIX=./installed \
 	-DBUILD_SHARED_LIBS=OFF \
 	-B ./deps/brotli/out \
@@ -245,10 +245,10 @@ set -e
 	--http-uwsgi-temp-path="/opt/freenginx/temp/http-uwsgi" \
 	--http-scgi-temp-path="/opt/freenginx/temp/http-scgi" \
 	--with-openssl="/src/openssl" \
-    --with-openssl-opt="no-apps no-shared no-tls1 no-tls1_1 enable-ec_nistp_64_gcc_128 enable-ktls -O3 -march=x86-64-v3 -mtune=generic -flto=auto -fPIC -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fcf-protection=full -ftrivial-auto-var-init=zero -D_FORTIFY_SOURCE=2" \
+    --with-openssl-opt="no-apps no-shared no-tls1 no-tls1_1 enable-ec_nistp_64_gcc_128 enable-ktls -O3 -march=x86-64-v2 -mtune=generic -flto=auto -fPIC -ffunction-sections -fdata-sections -fstack-protector-strong -fstack-clash-protection -fcf-protection=full -ftrivial-auto-var-init=zero -D_FORTIFY_SOURCE=2" \
 	--with-pcre="/src/pcre2" \
 	--with-pcre-jit \
-	--with-cc-opt="-I/usr/local/include -O3 -march=x86-64-v3 -mtune=generic -flto=auto -ffunction-sections -fdata-sections -fPIE -fstack-protector-strong -fstack-clash-protection -fcf-protection=full -ftrivial-auto-var-init=zero -D_FORTIFY_SOURCE=2" \
+	--with-cc-opt="-I/usr/local/include -O3 -march=x86-64-v2 -mtune=generic -flto=auto -ffunction-sections -fdata-sections -fPIE -fstack-protector-strong -fstack-clash-protection -fcf-protection=full -ftrivial-auto-var-init=zero -D_FORTIFY_SOURCE=2" \
 	--with-ld-opt="-L/usr/local/lib -static-pie -static-libgcc -flto=auto -lz -Wl,--gc-sections -Wl,-z,noexecstack -Wl,-z,text -Wl,-z,relro -Wl,-z,now" \
 	--with-compat \
 	--with-threads \
