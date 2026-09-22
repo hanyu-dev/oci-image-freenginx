@@ -8,7 +8,7 @@ FROM docker.io/library/alpine:${ALPINE_BASE_VERSION}@sha256:${ALPINE_BASE_HASH} 
 
 RUN <<'EOF'
 set -e
-apk add --no-cache ca-certificates=20260611-r0
+apk add --no-cache ca-certificates=20260909-r0
 apk add --no-cache git=2.54.0-r0
 rm -rf /var/lib/apk/tmp/* /var/cache/apk/* /var/log/apk.log
 EOF
