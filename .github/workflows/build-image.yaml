@@ -20,9 +20,6 @@ env:
   # See https://github.com/openssl/openssl/tags
   IMAGE_DEP_OPENSSL_VERSION: 4.0.2
   IMAGE_DEP_OPENSSL_COMMIT: f089acdf4bc7ba94a79f4bf6eb7362c3e7d14aa9
-  # See https://github.com/microsoft/mimalloc/tags
-  IMAGE_DEP_MIMALLOC_VERSION: 3.5.1
-  IMAGE_DEP_MIMALLOC_COMMIT: 34fbd7e7cd4627424490afe19b20f8066bfc537d
   # See https://github.com/google/ngx_brotli
   IMAGE_DEP_NGX_BROTLI_COMMIT: a71f9312c2deb28875acc7bacfdd5695a111aa53
   # See https://github.com/aperezdc/ngx-fancyindex/tags
@@ -67,8 +64,6 @@ jobs:
               -e IMAGE_DEP_PCRE_COMMIT="${IMAGE_DEP_PCRE_COMMIT}" \
               -e IMAGE_DEP_ZLIB_NG_VERSION="${IMAGE_DEP_ZLIB_NG_VERSION}" \
               -e IMAGE_DEP_ZLIB_NG_COMMIT="${IMAGE_DEP_ZLIB_NG_COMMIT}" \
-              -e IMAGE_DEP_MIMALLOC_VERSION="${IMAGE_DEP_MIMALLOC_VERSION}" \
-              -e IMAGE_DEP_MIMALLOC_COMMIT="${IMAGE_DEP_MIMALLOC_COMMIT}" \
               -e IMAGE_DEP_NGX_BROTLI_COMMIT="${IMAGE_DEP_NGX_BROTLI_COMMIT}" \
               -e IMAGE_DEP_NGX_FANCYINDEX_VERSION="${IMAGE_DEP_NGX_FANCYINDEX_VERSION}" \
               -e IMAGE_DEP_NGX_FANCYINDEX_COMMIT="${IMAGE_DEP_NGX_FANCYINDEX_COMMIT}" \

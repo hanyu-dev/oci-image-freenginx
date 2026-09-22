@@ -1,5 +1,5 @@
 [Unit]
-Description=Freenginx container service
+Description=Container 'freenginx' service
 RequiresMountsFor=%t/containers
 
 [Container]

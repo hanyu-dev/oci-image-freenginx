@@ -78,27 +78,6 @@ ARG IMAGE_DEP_OPENSSL_COMMIT
 
 RUN git checkout "${IMAGE_DEP_OPENSSL_COMMIT}"
 
-# == source code: microsoft/mimalloc ===
-
-WORKDIR /src
-
-ARG IMAGE_DEP_MIMALLOC_VERSION
-
-RUN git clone \
-    --depth 1 \
-    --recurse-submodules \
-    --shallow-submodules \
-    -j8 \
-    --single-branch \
-    -b "v$IMAGE_DEP_MIMALLOC_VERSION" \
-    https://github.com/microsoft/mimalloc
-
-WORKDIR /src/mimalloc
-
-ARG IMAGE_DEP_MIMALLOC_COMMIT
-
-RUN git checkout "${IMAGE_DEP_MIMALLOC_COMMIT}"
-
 # === source code: google/ngx_brotli ===
 
 WORKDIR /src
@@ -189,27 +168,6 @@ set -e
 make -j "$(nproc)"
 make install
 EOF
-
-# === install: mimalloc ===
-
-# WORKDIR /src/mimalloc
-#
-# RUN <<'EOF'
-# set -e
-# cmake -S . -B out/release \
-#     -DCMAKE_BUILD_TYPE=Release \
-#     -DCMAKE_INSTALL_PREFIX=/usr/local \
-#     -DCMAKE_INSTALL_LIBDIR=lib \
-#     -DMI_INSTALL_TOPLEVEL=ON \
-#     -DMI_BUILD_STATIC=ON \
-#     -DMI_BUILD_SHARED=OFF \
-#     -DMI_BUILD_TESTS=OFF \
-#     -DMI_OVERRIDE=ON \
-#     -DMI_OPT_ARCH=ON \
-#     -DMI_ALLOW_THP=FULL
-# cmake --build out/release -j "$(nproc)"
-# cmake --install out/release
-# EOF
 
 # === build: ngx-brotli ===
 
