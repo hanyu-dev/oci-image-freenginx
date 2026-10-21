@@ -148,7 +148,7 @@ RUN <<'EOF'
 set -e
 apk add --no-cache build-base=0.5-r4
 apk add --no-cache cmake=4.2.3-r0
-apk add --no-cache perl-dev=5.42.2-r0
+apk add --no-cache perl-dev=5.42.2-r1
 apk add --no-cache linux-headers=7.0.0-r1
 rm -rf /var/lib/apk/tmp/* /var/cache/apk/* /var/log/apk.log
 EOF
