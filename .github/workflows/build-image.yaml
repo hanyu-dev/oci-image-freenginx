@@ -18,8 +18,8 @@ env:
   IMAGE_DEP_ZLIB_NG_VERSION: 2.3.3
   IMAGE_DEP_ZLIB_NG_COMMIT: 12731092979c6d07f42da27da673a9f6c7b13586
   # See https://github.com/openssl/openssl/tags
-  IMAGE_DEP_OPENSSL_VERSION: 4.0.2
-  IMAGE_DEP_OPENSSL_COMMIT: f089acdf4bc7ba94a79f4bf6eb7362c3e7d14aa9
+  IMAGE_DEP_OPENSSL_VERSION: 4.0.3
+  IMAGE_DEP_OPENSSL_COMMIT: af1775b60dfa141a4ad762585052cabeb9f37e9e
   # See https://github.com/google/ngx_brotli
   IMAGE_DEP_NGX_BROTLI_COMMIT: a71f9312c2deb28875acc7bacfdd5695a111aa53
   # See https://github.com/aperezdc/ngx-fancyindex/tags
